@@ -32,6 +32,11 @@ export default {
       url: process.env.MAINNET_URL,
       accounts: [process.env.PRIVATE_KEY],
     },
+    arbitrumrinkeby: {
+      url: "https://rinkeby.arbitrum.io/rpc",
+      accounts: [process.env.PRIVATE_KEY],
+      chainId: 421611,
+    }
   },
   solidity: {
     compilers: [{
