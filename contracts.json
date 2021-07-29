@@ -1,4 +1,7 @@
 {
-  "kovan": { },
-  "localhost": { } 
+  "kovan": {},
+  "localhost": {},
+  "arbitrumrinkeby": {
+    "contract": "0x9E1Af086A378006B6D0a08020CC71fe248C29789"
+  }
 }
