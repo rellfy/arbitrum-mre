@@ -22,7 +22,6 @@ yarn-error.log*
 *.sw*
 
 build/
-.env
 
 cache/
 artifacts/
