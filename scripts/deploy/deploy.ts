@@ -1,6 +1,6 @@
 import hardhat from "hardhat";
 import { updateContractConfig } from "../utils";
-import * as Token from "./contracts/Token";
+import * as Contract from "./contracts/Contract";
 // @ts-ignore
 const ethers = hardhat.ethers;
 
@@ -25,7 +25,7 @@ export const deploy = async () => {
   const balance = await deployer.getBalance();
   console.log(`balance is ${ethers.utils.formatEther(balance)} ETH`);
   // Deploy Token contract
-  await Token.deploy(setAddresses);
+  await Contract.deploy(setAddresses);
   const delta = balance.sub(await deployer.getBalance());
   console.log(`deployment used a total of ${ethers.utils.formatEther(delta)} ETH`);
   return config;

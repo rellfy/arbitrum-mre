@@ -1,5 +1,7 @@
-import { ethers } from "hardhat";
+import hardhat, { ethers } from "hardhat";
+const upgrades = hardhat.upgrades;
 
+/** Deploy a regular contract */
 export const deployContract = async (
   contractName: string,
   constructorArguments: any[],
@@ -7,6 +9,20 @@ export const deployContract = async (
 ) => {
   const Contract = await ethers.getContractFactory(contractName);
   const contract = await Contract.deploy(...constructorArguments);
+  await contract.deployTransaction.wait(waitCount);
+  return contract;
+};
+
+/** Deploy an OZ proxy contract */
+export const deployProxy = async (
+  contractName,
+  constructorArguments,
+  waitCount = 6
+) => {
+  const Contract = await ethers.getContractFactory(contractName);
+  const contract = await upgrades.deployProxy(Contract, constructorArguments, {
+    kind: "uups",
+  });
   await contract.deployTransaction.wait(waitCount);
   return contract;
 };
